@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiches de Révision - Analyse et Intégration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+    <style>
+        :root {
+            --def-color: #3498db;
+            --thm-color: #e74c3c;
+            --prop-color: #2ecc71;
+            --method-color: #f39c12;
+            --remark-color: #9b59b6;
+        }
+        
+        .reveal {
+            font-size: 32px;
+        }
+        
+        .reveal h1 {
+            font-size: 2.2em;
+            text-transform: none;
+            margin-bottom: 0.5em;
+        }
+        
+        .reveal h2 {
+            font-size: 1.8em;
+            text-transform: none;
+            margin-bottom: 0.3em;
+        }
+        
+        .reveal h3 {
+            font-size: 1.4em;
+            text-transform: none;
+            margin-bottom: 0.3em;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.3em 0.8em;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-bottom: 0.5em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .badge-definition {
+            background-color: var(--def-color);
+            color: white;
+        }
+        
+        .badge-theoreme {
+            background-color: var(--thm-color);
+            color: white;
+        }
+        
+        .badge-propriete {
+            background-color: var(--prop-color);
+            color: white;
+        }
+        
+        .badge-methode {
+            background-color: var(--method-color);
+            color: white;
+        }
+        
+        .badge-remarque {
+            background-color: var(--remark-color);
+            color: white;
+        }
+        
+        .priority-high {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-left: 5px solid #f39c12;
+        }
+        
+        .priority-very-high {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-left: 5px solid #e74c3c;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        .content-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5em;
+            border-radius: 10px;
+            text-align: left;
+            margin: 1em 0;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            display: block;
+            margin: 0.5em 0;
+            font-size: 0.9em;
+        }
+        
+        .concept-title {
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+        }
+        
+        .chapter-intro {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2em;
+            border-radius: 15px;
+        }
+        
+        .navigation-hint {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.6em;
+            opacity: 0.7;
+        }
+        
+        ul {
+            text-align: left;
+            font-size: 0.9em;
+        }
+        
+        li {
+            margin: 0.5em 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide de titre -->
+            <section>
+                <h1>📚 Fiches de Révision</h1>
+                <h2>Analyse et Intégration</h2>
+                <p style="font-size: 0.8em; margin-top: 2em;">
+                    Focus prioritaire : <strong>Intégrabilité, TCD et Fubini</strong>
+                </p>
+                <p style="font-size: 0.6em; opacity: 0.7; margin-top: 2em;">
+                    Utilisez les flèches ← → pour naviguer
+                </p>
+            </section>
+
+            <!-- CHAPITRE II: MESURE -->
+            <section>
+                <section class="chapter-intro">
+                    <h2>Chapitre II</h2>
+                    <h3>Mesure, Tribu et Mesurabilité</h3>
+                    <p style="font-size: 0.8em; margin-top: 1em;">
+                        Fondements de la théorie de la mesure
+                    </p>
+                </section>
+
+                <section>
+                    <span class="badge badge-definition">Définition</span>
+                    <div class="content-box">
+                        <div class="concept-title">Tribu (ou σ-algèbre) sur Rⁿ</div>
+                        <p>Ensemble <strong>S</strong> de parties de Rⁿ vérifiant :</p>
+                        <ul>
+                            <li>Rⁿ ∈ S</li>
+                            <li>Stabilité par complémentaire</li>
+                            <li>Stabilité par réunion dénombrable</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Mesure de Lebesgue (λ) - Unicité</div>
+                        <p><strong>Unique mesure</strong> vérifiant :</p>
+                        <ul>
+                            <li>Normalisation (volume du pavé)</li>
+                            <li>σ-additivité</li>
+                            <li>Invariance par translation</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-propriete">Propriété Essentielle</span>
+                    <div class="content-box">
+                        <div class="concept-title">Fonction Mesurable</div>
+                        <p><strong>Sont mesurables :</strong></p>
+                        <ul>
+                            <li>Toute fonction continue</li>
+                            <li>Toute fonction continue par morceaux</li>
+                            <li>Toute fonction réglée</li>
+                        </ul>
+                        <p style="margin-top: 1em;"><strong>Stabilité :</strong> Limite simple, somme, produit, Sup, Inf de fonctions mesurables sont mesurables</p>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-remarque">Remarque</span>
+                    <div class="content-box">
+                        <div class="concept-title">Critère de Mesurabilité (Borélienne)</div>
+                        <p>f: R → R est mesurable ssi</p>
+                        <div class="formula">
+                            ∀a ∈ R, f⁻¹(]-∞, a[) ∈ B
+                        </div>
+                        <p style="font-size: 0.8em; opacity: 0.8; margin-top: 0.5em;">
+                            où B est la tribu des Boréliens
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- CHAPITRE III: INTÉGRABILITÉ -->
+            <section>
+                <section class="chapter-intro">
+                    <h2>Chapitre III</h2>
+                    <h3>Intégrabilité de Lebesgue</h3>
+                    <p style="font-size: 0.8em; margin-top: 1em;">
+                        Liens avec l'intégrale de Riemann
+                    </p>
+                </section>
+
+                <section>
+                    <span class="badge badge-definition">Définition Clé</span>
+                    <div class="content-box">
+                        <div class="concept-title">Intégrabilité de Lebesgue</div>
+                        <p><strong>f est intégrable</strong> ssi :</p>
+                        <div class="formula">
+                            f mesurable et ∫ |f| dλ < +∞
+                        </div>
+                        <p style="margin-top: 1em;">On définit alors :</p>
+                        <div class="formula">
+                            ∫ f dλ = ∫ f⁺ dλ - ∫ f⁻ dλ
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-propriete">Propriété Fondamentale</span>
+                    <div class="content-box">
+                        <div class="concept-title">Inégalité Triangulaire</div>
+                        <div class="formula">
+                            |∫ f dλ| ≤ ∫ |f| dλ
+                        </div>
+                        <p style="margin-top: 1em; font-size: 0.9em;">
+                            Propriété essentielle de l'intégrale de Lebesgue
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Lien Riemann/Lebesgue (Segments)</div>
+                        <p>Si f est Riemann intégrable sur [a, b] :</p>
+                        <div class="formula">
+                            ∫ f 1[a,b] dλ = ∫ₐᵇ f(x) dx
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Lien Riemann/Lebesgue (Impropres)</div>
+                        <p>L'intégrale impropre ∫ₐᵇ f(t)dt converge</p>
+                        <p><strong>⟺ Convergence absolue</strong></p>
+                        <div class="formula">
+                            ∫ₐᵇ |f(t)|dt < +∞
+                        </div>
+                        <p style="margin-top: 0.5em;">⟹ f est intégrable (Lebesgue)</p>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-remarque">Contre-Exemple Important</span>
+                    <div class="content-box">
+                        <div class="concept-title">Fonctions Non-Intégrables</div>
+                        <div class="formula">
+                            f(x) = (sin x)/x · 1[0,+∞[
+                        </div>
+                        <p style="margin-top: 1em;">
+                            ❌ <strong>Non intégrable</strong> car ∫ |f| dλ = +∞
+                        </p>
+                        <p style="font-size: 0.8em; opacity: 0.8;">
+                            Même si l'intégrale impropre converge !
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- CHAPITRE IV: TCD -->
+            <section>
+                <section class="chapter-intro priority-high">
+                    <h2>Chapitre IV ⭐</h2>
+                    <h3>Théorème de Convergence Dominée</h3>
+                    <p style="font-size: 0.8em; margin-top: 1em;">
+                        <strong>Priorité Élevée</strong> - Corollaires utilisés dans TD 5 et 8
+                    </p>
+                </section>
+
+                <section>
+                    <span class="badge badge-definition">Définition</span>
+                    <div class="content-box">
+                        <div class="concept-title">Négligeable / Presque Partout (p.p.)</div>
+                        <p><strong>Ensemble négligeable :</strong></p>
+                        <div class="formula">
+                            A négligeable ⟺ λ(A) = ∫ 1ₐ dλ = 0
+                        </div>
+                        <p style="margin-top: 1em;"><strong>Propriété vraie p.p. :</strong></p>
+                        <p>Vraie sauf sur un ensemble négligeable</p>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème Clé</span>
+                    <div class="content-box">
+                        <div class="concept-title">TCD - Énoncé</div>
+                        <p><strong>Hypothèses :</strong></p>
+                        <ul style="font-size: 0.85em;">
+                            <li>1. fₙ → f simplement p.p.</li>
+                            <li>2. <strong>Domination :</strong> ∃ g intégrable (∫ g dλ < +∞)<br>
+                                telle que ∀n, |fₙ| ≤ g p.p.</li>
+                        </ul>
+                        <p style="margin-top: 1em;"><strong>Conclusion :</strong></p>
+                        <div class="formula">
+                            lim ∫ fₙ dλ = ∫ f dλ
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">TCM (Beppo-Lévi)</div>
+                        <p>Si (fₙ) est une suite <strong>croissante</strong> de fonctions mesurables positives de limite simple f :</p>
+                        <div class="formula">
+                            lim ∫ fₙ dλ = ∫ f dλ
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Corollaire de Continuité</span>
+                    <div class="content-box">
+                        <div class="concept-title">H(x) = ∫ h(x,t) dλ(t) est continue si :</div>
+                        <ul style="font-size: 0.85em;">
+                            <li>h(x, t) mesurable en t</li>
+                            <li>h(x, t) continue en x</li>
+                            <li><strong>Domination :</strong> |h(x, t)| ≤ g(t)<br>
+                                avec g intégrable</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Corollaire de Dérivabilité</span>
+                    <div class="content-box">
+                        <div class="concept-title">H(x) dérivable et H'(x) = ∫ ∂h/∂x (x,t) dλ(t)</div>
+                        <p><strong>Condition clé :</strong></p>
+                        <div class="formula">
+                            |∂h/∂x (x, t)| ≤ g(t)
+                        </div>
+                        <p style="font-size: 0.85em; margin-top: 0.5em;">
+                            avec g intégrable (domination de la dérivée)
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- CHAPITRE V: FUBINI -->
+            <section>
+                <section class="chapter-intro priority-very-high">
+                    <h2>Chapitre V 🔥</h2>
+                    <h3>Théorèmes de Fubini</h3>
+                    <p style="font-size: 0.9em; margin-top: 1em;">
+                        <strong>PRIORITÉ MAXIMALE</strong>
+                    </p>
+                    <p style="font-size: 0.8em;">
+                        Sujet principal de l'interrogation
+                    </p>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Fubini-Tonelli (f ≥ 0)</div>
+                        <p>Pour f: R² → R₊ <strong>mesurable positive</strong> :</p>
+                        <div class="formula">
+                            ∫∫ f dλ = ∫ (∫ f(x,y) dy) dx = ∫ (∫ f(x,y) dx) dy
+                        </div>
+                        <p style="margin-top: 1em; font-size: 0.85em;">
+                            ⚡ <strong>Utilisé pour prouver l'intégrabilité</strong>
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Fubini (f intégrable)</div>
+                        <p>Si f: R² → R est <strong>intégrable</strong> :</p>
+                        <div class="formula">
+                            ∫∫ f dλ = ∫ (∫ f(x,y) dy) dx = ∫ (∫ f(x,y) dx) dy
+                        </div>
+                        <p style="margin-top: 1em;"><strong>⚠️ Condition nécessaire :</strong></p>
+                        <div class="formula">
+                            ∫ |f| dλ < +∞
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-methode">Méthode</span>
+                    <div class="content-box">
+                        <div class="concept-title">Preuve d'Intégrabilité</div>
+                        <p><strong>Appliquer Fubini-Tonelli à |f| :</strong></p>
+                        <ol style="font-size: 0.85em;">
+                            <li>Calculer ∫ᴿ (∫ᴿ |f(x,y)| dy) dx</li>
+                            <li>Si le résultat est fini</li>
+                            <li>⟹ f est intégrable ✓</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-remarque">Remarque Importante</span>
+                    <div class="content-box">
+                        <div class="concept-title">Échec de Fubini - Interprétation</div>
+                        <p>Si les deux intégrales itérées donnent des résultats <strong>différents</strong></p>
+                        <p>ou si ∫ |f| dλ = +∞</p>
+                        <p style="margin-top: 1em;">⟹ <strong>f n'est pas intégrable</strong></p>
+                        <p style="font-size: 0.8em; margin-top: 1em; opacity: 0.8;">
+                            L'égalité des intégrales itérées est la <strong>conséquence</strong> de l'intégrabilité, non sa cause
+                        </p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- CHAPITRE VI: CHANGEMENT DE VARIABLES -->
+            <section>
+                <section class="chapter-intro priority-high">
+                    <h2>Chapitre VI</h2>
+                    <h3>Changement de Variables en Rⁿ</h3>
+                    <p style="font-size: 0.8em; margin-top: 1em;">
+                        Technique de calcul en R²
+                    </p>
+                </section>
+
+                <section>
+                    <span class="badge badge-definition">Définition</span>
+                    <div class="content-box">
+                        <div class="concept-title">C¹-Difféomorphisme</div>
+                        <p>φ: U → V est un C¹-difféomorphisme si :</p>
+                        <ul style="font-size: 0.85em;">
+                            <li>φ bijective</li>
+                            <li>φ de classe C¹ sur U</li>
+                            <li>Jac φ(x) ≠ 0 pour tout x ∈ U</li>
+                        </ul>
+                        <div class="formula" style="margin-top: 1em;">
+                            Jacobien = det(Jφ(x))
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-theoreme">Théorème</span>
+                    <div class="content-box">
+                        <div class="concept-title">Formule de Changement de Variables</div>
+                        <div class="formula">
+                            ∫ᵥ f(y) dλ(y) = ∫ᵤ f∘φ(x) |Jac φ(x)| dλ(x)
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-methode">Application Mécanique</span>
+                    <div class="content-box">
+                        <div class="concept-title">Procédure</div>
+                        <ol style="font-size: 0.85em;">
+                            <li>Remplacer y par φ(x) dans f</li>
+                            <li>Remplacer dλ(y) par |Jac φ(x)| dλ(x)</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section>
+                    <span class="badge badge-remarque">Remarque</span>
+                    <div class="content-box">
+                        <div class="concept-title">Coordonnées Polaires</div>
+                        <p>Pour φ(r,θ) = (r cos θ, r sin θ) :</p>
+                        <div class="formula">
+                            |Jac φ(r, θ)| = r
+                        </div>
+                        <p style="margin-top: 1em;">L'élément dλ(x,y) devient :</p>
+                        <div class="formula">
+                            r dλ(r,θ)
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Slide de fin -->
+            <section>
+                <h2>✨ Fin des Fiches de Révision</h2>
+                <p style="font-size: 0.9em; margin-top: 2em;">
+                    <strong>Priorités pour l'examen :</strong>
+                </p>
+                <ul style="font-size: 0.8em;">
+                    <li>🔥 Théorèmes de Fubini (intégrabilité)</li>
+                    <li>⭐ TCD et ses corollaires</li>
+                    <li>📊 Changement de variables</li>
+                </ul>
+                <p style="font-size: 0.7em; margin-top: 3em; opacity: 0.6;">
+                    Bon courage pour vos révisions ! 💪
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <div class="navigation-hint">
+        ← → : Navigation | ↑ ↓ : Sections
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            controls: true,
+            progress: true,
+            center: true,
+            slideNumber: 'c/t',
+            keyboard: true,
+            overview: true,
+            touch: true,
+            loop: false,
+            rtl: false,
+            shuffle: false,
+            fragments: true,
+            fragmentInURL: true,
+            embedded: false,
+            help: true,
+            showNotes: false,
+            autoPlayMedia: null,
+            preloadIframes: null,
+            autoSlide: 0,
+            autoSlideStoppable: true,
+            mouseWheel: false,
+            hideInactiveCursor: true,
+            hideCursorTime: 5000,
+            previewLinks: false,
+            width: 1280,
+            height: 720,
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>
