@@ -1,574 +1,536 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiches de Révision - Analyse et Intégration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
-    <style>
-        :root {
-            --def-color: #3498db;
-            --thm-color: #e74c3c;
-            --prop-color: #2ecc71;
-            --method-color: #f39c12;
-            --remark-color: #9b59b6;
-        }
-        
-        .reveal {
-            font-size: 32px;
-        }
-        
-        .reveal h1 {
-            font-size: 2.2em;
-            text-transform: none;
-            margin-bottom: 0.5em;
-        }
-        
-        .reveal h2 {
-            font-size: 1.8em;
-            text-transform: none;
-            margin-bottom: 0.3em;
-        }
-        
-        .reveal h3 {
-            font-size: 1.4em;
-            text-transform: none;
-            margin-bottom: 0.3em;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 0.3em 0.8em;
-            border-radius: 20px;
-            font-size: 0.7em;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .badge-definition {
-            background-color: var(--def-color);
-            color: white;
-        }
-        
-        .badge-theoreme {
-            background-color: var(--thm-color);
-            color: white;
-        }
-        
-        .badge-propriete {
-            background-color: var(--prop-color);
-            color: white;
-        }
-        
-        .badge-methode {
-            background-color: var(--method-color);
-            color: white;
-        }
-        
-        .badge-remarque {
-            background-color: var(--remark-color);
-            color: white;
-        }
-        
-        .priority-high {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-left: 5px solid #f39c12;
-        }
-        
-        .priority-very-high {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-left: 5px solid #e74c3c;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
-        }
-        
-        .content-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5em;
-            border-radius: 10px;
-            text-align: left;
-            margin: 1em 0;
-            border-left: 4px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .formula {
-            font-family: 'Courier New', monospace;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.5em 1em;
-            border-radius: 5px;
-            display: block;
-            margin: 0.5em 0;
-            font-size: 0.9em;
-        }
-        
-        .concept-title {
-            font-weight: bold;
-            color: #f39c12;
-            margin-bottom: 0.5em;
-            font-size: 1.1em;
-        }
-        
-        .chapter-intro {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2em;
-            border-radius: 15px;
-        }
-        
-        .navigation-hint {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 0.6em;
-            opacity: 0.7;
-        }
-        
-        ul {
-            text-align: left;
-            font-size: 0.9em;
-        }
-        
-        li {
-            margin: 0.5em 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>JJK RPG – Captain Communist</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Crimson+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#1a1a1a; --parch:#faf7f0; --parch2:#f0ead8;
+  --border:#c8b89a; --bdark:#8b7355;
+  --red:#8b0000; --rl:rgba(139,0,0,.08); --rm:rgba(139,0,0,.15);
+  --blue:#1a3a6b; --bl:rgba(26,58,107,.08);
+  --green:#1a5c2a; --gl:rgba(26,92,42,.08);
+  --gold:#b8960c; --field:rgba(0,0,0,.025); --shadow:rgba(0,0,0,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#222;font-family:'Crimson Pro',serif;color:var(--ink);min-height:100vh}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:10px}
+
+/* ── TOPBAR ── */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:#111;border-bottom:2px solid var(--red);display:flex;align-items:center;height:48px;padding:0 6px}
+#menu-toggle{background:none;border:none;color:#fff;padding:0 12px;height:48px;cursor:pointer;font-size:1rem;display:flex;align-items:center;gap:6px;font-family:'IM Fell English',serif;transition:color .2s}
+#menu-toggle:hover{color:#e8a0a0}
+#tab-nav{display:flex;overflow-x:auto;flex:1;scrollbar-width:none}
+#tab-nav::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;color:#999;padding:0 12px;height:48px;cursor:pointer;font-family:'IM Fell English',serif;font-size:.75rem;white-space:nowrap;border-bottom:3px solid transparent;transition:all .2s}
+.tab-btn:hover{color:#ddd}
+.tab-btn.active{color:#fff;border-bottom-color:var(--red)}
+
+/* ── SIDEBAR ── */
+#sidebar{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#111;color:#fff;z-index:2000;transition:left .3s ease;padding:58px 0 20px;box-shadow:4px 0 20px rgba(0,0,0,.5);border-right:1px solid var(--red);overflow-y:auto}
+#sidebar.open{left:0}
+#soverlay{display:none;position:fixed;inset:0;z-index:1999;background:rgba(0,0,0,.5)}
+#soverlay.open{display:block}
+.stitle{padding:14px 20px 10px;font-family:'IM Fell English',serif;color:var(--red);font-size:1.05rem;border-bottom:1px solid #333;letter-spacing:.05em}
+.snav{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;color:#bbb;text-align:left;padding:11px 20px;border-bottom:1px solid #1e1e1e;cursor:pointer;font-family:'Crimson Pro',serif;font-size:.93rem;transition:all .2s}
+.snav:hover{color:#fff;background:var(--rm);padding-left:26px}
+.snav .num{color:var(--red);font-weight:700;width:18px;flex-shrink:0}
+
+/* ── APP ── */
+#app{margin-top:48px;padding:16px;max-width:1100px;margin-left:auto;margin-right:auto}
+.page{display:none;animation:fadeIn .22s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CARD ── */
+.card{background:var(--parch);border:1px solid var(--border);border-radius:4px;padding:18px;margin-bottom:16px;box-shadow:0 2px 8px var(--shadow);position:relative}
+.card::before{content:'';position:absolute;inset:3px;border:1px solid var(--border);border-radius:2px;pointer-events:none;opacity:.35}
+
+/* ── HEADINGS ── */
+.ptitle{font-family:'IM Fell English',serif;color:var(--red);font-size:1.5rem;border-bottom:2px solid var(--red);padding-bottom:5px;margin-bottom:16px;letter-spacing:.03em}
+.stitle2{font-family:'IM Fell English',serif;color:var(--red);font-size:1.05rem;border-bottom:1px dashed var(--bdark);padding-bottom:3px;margin-bottom:12px;letter-spacing:.02em}
+
+/* ── CONTENTEDITABLE ── */
+[contenteditable="true"]{border-bottom:1px dashed transparent;transition:all .2s;cursor:text}
+span[contenteditable="true"], div[contenteditable="true"], h2[contenteditable="true"] { display:inline-block; min-width:20px; }
+th[contenteditable="true"] { display:table-cell; min-width:20px; }
+[contenteditable="true"]:hover{border-bottom-color:var(--red)}
+[contenteditable="true"]:focus{outline:none;border-bottom:1px solid var(--red);background:var(--rl)}
+
+/* ── INPUTS ── */
+input[type="text"],input[type="number"],textarea{background:var(--field);border:none;border-bottom:1px solid var(--border);padding:3px 5px;font-family:'Crimson Pro',serif;font-size:.93rem;color:var(--ink);width:100%;transition:border-color .2s,background .2s}
+input[type="text"]:focus,input[type="number"]:focus,textarea:focus{outline:none;border-bottom-color:var(--red);background:var(--rl)}
+textarea{resize:vertical;min-height:44px;line-height:1.4}
+
+.field-row{display:flex;align-items:baseline;gap:8px;margin-bottom:9px}
+.flabel{font-weight:600;color:#666;white-space:nowrap;font-size:.83rem;min-width:78px}
+.field-row input{flex:1}
+
+/* ── STAT BOXES ── */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px}
+.stat-box{border:1px solid var(--bdark);border-radius:3px;background:var(--parch2);text-align:center;padding:5px 3px}
+.stat-box .sn{font-size:.65rem;color:#666;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:2px}
+.stat-box input{text-align:center;font-weight:700;font-size:.95rem;border:none!important;background:transparent!important;padding:0}
+
+.main-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:14px}
+.ms-box{border:1px solid #555;background:var(--rl);text-align:center;padding:5px 3px;border-radius:3px}
+.ms-box .sn{font-size:.62rem;color:var(--red);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px}
+.ms-box input{text-align:center;font-weight:700;font-size:1.05rem;border:none!important;background:transparent!important;padding:0}
+
+/* ── SUBSTATS ── */
+.substats-wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.subg table{width:100%;border-collapse:collapse}
+.subg th{background:var(--rl);border:1px solid var(--bdark);color:var(--red);padding:4px 5px;font-family:'IM Fell English',serif;font-size:.82rem;text-align:center}
+.subg td{border:1px solid var(--border);padding:2px 4px;display:flex;align-items:center;gap:3px}
+.subg td span{font-size:.78rem;color:#444;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.subg td input{width:46px;text-align:center;flex-shrink:0;font-weight:600}
+
+/* ── DATA TABLE ── */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:14px}
+.data-table th{background:var(--rl);border:1px solid var(--bdark);color:var(--red);padding:8px;font-family:'IM Fell English',serif;font-size:.9rem;text-align:left}
+.data-table td{border:1px solid var(--border);padding:0;vertical-align:top}
+.data-table td input, .data-table td textarea{background:transparent;border:none;width:100%;padding:8px;display:block;box-sizing:border-box;margin:0;font-family:'Crimson Pro',serif;font-size:.93rem;color:var(--ink)}
+.data-table td textarea{min-height:55px;resize:vertical}
+.data-table td input:focus, .data-table td textarea:focus{background:var(--rl);outline:none}
+.data-table tbody tr:nth-child(even){background:rgba(0,0,0,.02)}
+.data-table tbody tr:hover{background:rgba(139,0,0,.04)}
+.tscroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tscroll .data-table{margin-bottom:0}
+
+/* ── PORTRAIT ── */
+.portrait{width:95px;height:105px;border:2px solid var(--bdark);background:var(--parch2);display:flex;align-items:center;justify-content:center;flex-shrink:0;border-radius:3px}
+.portrait i{color:#bbb;font-size:2.2rem}
+
+/* ── SKILL ITEMS ── */
+.skill-list{display:flex;flex-direction:column;gap:5px}
+.skill-item{display:flex;align-items:center;gap:6px}
+.skill-item::before{content:'◆';color:var(--red);font-size:.55rem;flex-shrink:0}
+.skill-item input{flex:1}
+.preview-btn{background:none;border:1px solid var(--border);border-radius:3px;color:#888;cursor:pointer;padding:2px 7px;font-size:.75rem;white-space:nowrap;flex-shrink:0;transition:all .2s;font-family:'Crimson Pro',serif}
+.preview-btn:hover{background:var(--rl);border-color:var(--red);color:var(--red)}
+
+/* ── MARTIAL ARTS ROW ── */
+.ma-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:4px;align-items:center;padding:4px 0;border-bottom:1px solid var(--border)}
+.ma-row:last-child{border-bottom:none}
+.ma-row input{border:none;border-bottom:1px solid var(--border);background:transparent;font-size:.9rem;padding:3px 4px}
+.ma-row input:focus{outline:none;border-bottom-color:var(--red);background:var(--rl)}
+.ma-header{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:4px;font-family:'IM Fell English',serif;color:var(--red);font-size:.82rem;border-bottom:2px solid var(--bdark);padding-bottom:4px;margin-bottom:6px}
+.del-btn{background:none;border:none;color:#ccc;cursor:pointer;font-size:.85rem;padding:2px 6px;transition:color .2s}
+.del-btn:hover{color:#c00}
+.add-btn{margin-top:10px;background:var(--rl);border:1px dashed var(--bdark);color:var(--red);padding:5px 14px;cursor:pointer;font-family:'Crimson Pro',serif;font-size:.88rem;border-radius:3px;transition:background .2s}
+.add-btn:hover{background:var(--rm)}
+
+/* ── MODAL ── */
+#modal-overlay{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.65);align-items:center;justify-content:center}
+#modal-overlay.open{display:flex}
+#modal{background:var(--parch);border:2px solid var(--bdark);border-radius:5px;width:min(520px,94vw);max-height:85vh;overflow-y:auto;padding:24px;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#modal::before{content:'';position:absolute;inset:4px;border:1px solid var(--border);border-radius:3px;pointer-events:none;opacity:.4}
+#modal h3{font-family:'IM Fell English',serif;color:var(--red);font-size:1.3rem;margin-bottom:14px;border-bottom:2px solid var(--red);padding-bottom:5px}
+#modal .field-row{margin-bottom:10px}
+#modal label{display:block;font-size:.78rem;color:#666;font-weight:600;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+#modal input[type="text"],#modal textarea{width:100%;border:1px solid var(--border);border-radius:3px;padding:6px 8px;font-family:'Crimson Pro',serif;font-size:.93rem}
+#modal textarea{min-height:80px}
+#modal-close{position:absolute;top:10px;right:12px;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#888;transition:color .2s;z-index:1}
+#modal-close:hover{color:var(--red)}
+#modal-save{background:var(--red);color:#fff;border:none;padding:7px 20px;font-family:'IM Fell English',serif;font-size:.95rem;border-radius:3px;cursor:pointer;transition:background .2s;margin-top:10px}
+#modal-save:hover{background:#a00}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ── INV ITEMS ── */
+.inv-item{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.inv-icon{color:#999;font-size:.8rem;flex-shrink:0}
+
+/* ── BINDING VOWS ── */
+.vow-block{border:1px solid var(--border);border-radius:3px;padding:10px;margin-bottom:10px;background:var(--parch2)}
+.vow-block .vow-name{font-weight:600;font-size:.88rem;margin-bottom:4px}
+
+/* ── DIVIDER ── */
+.div{text-align:center;color:var(--bdark);margin:12px 0;letter-spacing:.3em;font-size:.75rem}
+
+/* ── SAVE INDICATOR ── */
+#save-ind{position:fixed;bottom:8px;right:8px;font-size:.7rem;color:#777;z-index:500;background:rgba(255,255,255,.9);padding:4px 9px;border-radius:3px;border:1px solid #ddd}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  #app{padding:10px}
+  .tab-btn{font-size:.68rem;padding:0 9px}
+  .card{padding:12px}
+  .card::before{display:none}
+  .ptitle{font-size:1.25rem}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .main-stats{grid-template-columns:repeat(3,1fr)}
+  .substats-wrap{grid-template-columns:1fr 1fr}
+  .g2,.g3{grid-template-columns:1fr}
+  .flabel{min-width:65px;font-size:.78rem}
+  .ma-row,.ma-header{grid-template-columns:1fr 1fr 1fr auto}
+}
+</style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <!-- Slide de titre -->
-            <section>
-                <h1>📚 Fiches de Révision</h1>
-                <h2>Analyse et Intégration</h2>
-                <p style="font-size: 0.8em; margin-top: 2em;">
-                    Focus prioritaire : <strong>Intégrabilité, TCD et Fubini</strong>
-                </p>
-                <p style="font-size: 0.6em; opacity: 0.7; margin-top: 2em;">
-                    Utilisez les flèches ← → pour naviguer
-                </p>
-            </section>
 
-            <!-- CHAPITRE II: MESURE -->
-            <section>
-                <section class="chapter-intro">
-                    <h2>Chapitre II</h2>
-                    <h3>Mesure, Tribu et Mesurabilité</h3>
-                    <p style="font-size: 0.8em; margin-top: 1em;">
-                        Fondements de la théorie de la mesure
-                    </p>
-                </section>
+<nav id="topbar">
+  <button id="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+  <div id="tab-nav">
+    <button class="tab-btn active"  onclick="showPage(0,this)">Stats</button>
+    <button class="tab-btn"         onclick="showPage(1,this)">XP Skills</button>
+    <button class="tab-btn"         onclick="showPage(2,this)">Jujutsu Skills</button>
+    <button class="tab-btn"         onclick="showPage(3,this)">Inventaire</button>
+    <button class="tab-btn"         onclick="showPage(4,this)">Arts Martiaux</button>
+    <button class="tab-btn"         onclick="showPage(5,this)">Énergie</button>
+    <button class="tab-btn"         onclick="showPage(6,this)">Archétype</button>
+    <button class="tab-btn"         onclick="showPage(7,this)">Technique</button>
+    <button class="tab-btn"         onclick="showPage(8,this)">Binding Vows</button>
+  </div>
+</nav>
 
-                <section>
-                    <span class="badge badge-definition">Définition</span>
-                    <div class="content-box">
-                        <div class="concept-title">Tribu (ou σ-algèbre) sur Rⁿ</div>
-                        <p>Ensemble <strong>S</strong> de parties de Rⁿ vérifiant :</p>
-                        <ul>
-                            <li>Rⁿ ∈ S</li>
-                            <li>Stabilité par complémentaire</li>
-                            <li>Stabilité par réunion dénombrable</li>
-                        </ul>
-                    </div>
-                </section>
+<div id="soverlay" onclick="toggleMenu()"></div>
+<div id="sidebar">
+  <div class="stitle"><i class="fa-solid fa-scroll"></i> JJK RPG</div>
+  <button class="snav" onclick="goToPage(0)"><span class="num">1</span>Stats & Identité</button>
+  <button class="snav" onclick="goToPage(1)"><span class="num">2</span>XP Abilities</button>
+  <button class="snav" onclick="goToPage(2)"><span class="num">3</span>Jujutsu Skills</button>
+  <button class="snav" onclick="goToPage(3)"><span class="num">4</span>Inventaire</button>
+  <button class="snav" onclick="goToPage(4)"><span class="num">5</span>Arts Martiaux</button>
+  <button class="snav" onclick="goToPage(5)"><span class="num">6</span>Énergie Maudite</button>
+  <button class="snav" onclick="goToPage(6)"><span class="num">7</span>Archétype</button>
+  <button class="snav" onclick="goToPage(7)"><span class="num">8</span>Cursed Technique</button>
+  <button class="snav" onclick="goToPage(8)"><span class="num">9</span>Binding Vows</button>
+</div>
 
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Mesure de Lebesgue (λ) - Unicité</div>
-                        <p><strong>Unique mesure</strong> vérifiant :</p>
-                        <ul>
-                            <li>Normalisation (volume du pavé)</li>
-                            <li>σ-additivité</li>
-                            <li>Invariance par translation</li>
-                        </ul>
-                    </div>
-                </section>
+<div id="modal-overlay">
+  <div id="modal">
+    <button id="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="modal-title">Aperçu du skill</h3>
+    <div class="field-row"><label>Nom</label><input type="text" id="modal-name" placeholder="Nom du skill…"></div>
+    <div class="field-row"><label>Description / Effet</label><textarea id="modal-desc" placeholder="Décris l'effet, les conditions, les dés…" rows="5"></textarea></div>
+    <div class="field-row"><label>Coût CE (si applicable)</label><input type="text" id="modal-cost" placeholder="ex: 2 CE, N/A…"></div>
+    <div class="field-row"><label>Notes / Conditions</label><textarea id="modal-notes" placeholder="Conditions spéciales, durée, cooldown…" rows="3"></textarea></div>
+    <button id="modal-save" onclick="saveModal()"><i class="fa-solid fa-floppy-disk"></i> Sauvegarder</button>
+  </div>
+</div>
 
-                <section>
-                    <span class="badge badge-propriete">Propriété Essentielle</span>
-                    <div class="content-box">
-                        <div class="concept-title">Fonction Mesurable</div>
-                        <p><strong>Sont mesurables :</strong></p>
-                        <ul>
-                            <li>Toute fonction continue</li>
-                            <li>Toute fonction continue par morceaux</li>
-                            <li>Toute fonction réglée</li>
-                        </ul>
-                        <p style="margin-top: 1em;"><strong>Stabilité :</strong> Limite simple, somme, produit, Sup, Inf de fonctions mesurables sont mesurables</p>
-                    </div>
-                </section>
+<div id="app">
 
-                <section>
-                    <span class="badge badge-remarque">Remarque</span>
-                    <div class="content-box">
-                        <div class="concept-title">Critère de Mesurabilité (Borélienne)</div>
-                        <p>f: R → R est mesurable ssi</p>
-                        <div class="formula">
-                            ∀a ∈ R, f⁻¹(]-∞, a[) ∈ B
-                        </div>
-                        <p style="font-size: 0.8em; opacity: 0.8; margin-top: 0.5em;">
-                            où B est la tribu des Boréliens
-                        </p>
-                    </div>
-                </section>
-            </section>
+<div class="page active" id="page-0">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-s1">Identité & Caractéristiques</h2>
 
-            <!-- CHAPITRE III: INTÉGRABILITÉ -->
-            <section>
-                <section class="chapter-intro">
-                    <h2>Chapitre III</h2>
-                    <h3>Intégrabilité de Lebesgue</h3>
-                    <p style="font-size: 0.8em; margin-top: 1em;">
-                        Liens avec l'intégrale de Riemann
-                    </p>
-                </section>
-
-                <section>
-                    <span class="badge badge-definition">Définition Clé</span>
-                    <div class="content-box">
-                        <div class="concept-title">Intégrabilité de Lebesgue</div>
-                        <p><strong>f est intégrable</strong> ssi :</p>
-                        <div class="formula">
-                            f mesurable et ∫ |f| dλ < +∞
-                        </div>
-                        <p style="margin-top: 1em;">On définit alors :</p>
-                        <div class="formula">
-                            ∫ f dλ = ∫ f⁺ dλ - ∫ f⁻ dλ
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-propriete">Propriété Fondamentale</span>
-                    <div class="content-box">
-                        <div class="concept-title">Inégalité Triangulaire</div>
-                        <div class="formula">
-                            |∫ f dλ| ≤ ∫ |f| dλ
-                        </div>
-                        <p style="margin-top: 1em; font-size: 0.9em;">
-                            Propriété essentielle de l'intégrale de Lebesgue
-                        </p>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Lien Riemann/Lebesgue (Segments)</div>
-                        <p>Si f est Riemann intégrable sur [a, b] :</p>
-                        <div class="formula">
-                            ∫ f 1[a,b] dλ = ∫ₐᵇ f(x) dx
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Lien Riemann/Lebesgue (Impropres)</div>
-                        <p>L'intégrale impropre ∫ₐᵇ f(t)dt converge</p>
-                        <p><strong>⟺ Convergence absolue</strong></p>
-                        <div class="formula">
-                            ∫ₐᵇ |f(t)|dt < +∞
-                        </div>
-                        <p style="margin-top: 0.5em;">⟹ f est intégrable (Lebesgue)</p>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-remarque">Contre-Exemple Important</span>
-                    <div class="content-box">
-                        <div class="concept-title">Fonctions Non-Intégrables</div>
-                        <div class="formula">
-                            f(x) = (sin x)/x · 1[0,+∞[
-                        </div>
-                        <p style="margin-top: 1em;">
-                            ❌ <strong>Non intégrable</strong> car ∫ |f| dλ = +∞
-                        </p>
-                        <p style="font-size: 0.8em; opacity: 0.8;">
-                            Même si l'intégrale impropre converge !
-                        </p>
-                    </div>
-                </section>
-            </section>
-
-            <!-- CHAPITRE IV: TCD -->
-            <section>
-                <section class="chapter-intro priority-high">
-                    <h2>Chapitre IV ⭐</h2>
-                    <h3>Théorème de Convergence Dominée</h3>
-                    <p style="font-size: 0.8em; margin-top: 1em;">
-                        <strong>Priorité Élevée</strong> - Corollaires utilisés dans TD 5 et 8
-                    </p>
-                </section>
-
-                <section>
-                    <span class="badge badge-definition">Définition</span>
-                    <div class="content-box">
-                        <div class="concept-title">Négligeable / Presque Partout (p.p.)</div>
-                        <p><strong>Ensemble négligeable :</strong></p>
-                        <div class="formula">
-                            A négligeable ⟺ λ(A) = ∫ 1ₐ dλ = 0
-                        </div>
-                        <p style="margin-top: 1em;"><strong>Propriété vraie p.p. :</strong></p>
-                        <p>Vraie sauf sur un ensemble négligeable</p>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème Clé</span>
-                    <div class="content-box">
-                        <div class="concept-title">TCD - Énoncé</div>
-                        <p><strong>Hypothèses :</strong></p>
-                        <ul style="font-size: 0.85em;">
-                            <li>1. fₙ → f simplement p.p.</li>
-                            <li>2. <strong>Domination :</strong> ∃ g intégrable (∫ g dλ < +∞)<br>
-                                telle que ∀n, |fₙ| ≤ g p.p.</li>
-                        </ul>
-                        <p style="margin-top: 1em;"><strong>Conclusion :</strong></p>
-                        <div class="formula">
-                            lim ∫ fₙ dλ = ∫ f dλ
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">TCM (Beppo-Lévi)</div>
-                        <p>Si (fₙ) est une suite <strong>croissante</strong> de fonctions mesurables positives de limite simple f :</p>
-                        <div class="formula">
-                            lim ∫ fₙ dλ = ∫ f dλ
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Corollaire de Continuité</span>
-                    <div class="content-box">
-                        <div class="concept-title">H(x) = ∫ h(x,t) dλ(t) est continue si :</div>
-                        <ul style="font-size: 0.85em;">
-                            <li>h(x, t) mesurable en t</li>
-                            <li>h(x, t) continue en x</li>
-                            <li><strong>Domination :</strong> |h(x, t)| ≤ g(t)<br>
-                                avec g intégrable</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Corollaire de Dérivabilité</span>
-                    <div class="content-box">
-                        <div class="concept-title">H(x) dérivable et H'(x) = ∫ ∂h/∂x (x,t) dλ(t)</div>
-                        <p><strong>Condition clé :</strong></p>
-                        <div class="formula">
-                            |∂h/∂x (x, t)| ≤ g(t)
-                        </div>
-                        <p style="font-size: 0.85em; margin-top: 0.5em;">
-                            avec g intégrable (domination de la dérivée)
-                        </p>
-                    </div>
-                </section>
-            </section>
-
-            <!-- CHAPITRE V: FUBINI -->
-            <section>
-                <section class="chapter-intro priority-very-high">
-                    <h2>Chapitre V 🔥</h2>
-                    <h3>Théorèmes de Fubini</h3>
-                    <p style="font-size: 0.9em; margin-top: 1em;">
-                        <strong>PRIORITÉ MAXIMALE</strong>
-                    </p>
-                    <p style="font-size: 0.8em;">
-                        Sujet principal de l'interrogation
-                    </p>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Fubini-Tonelli (f ≥ 0)</div>
-                        <p>Pour f: R² → R₊ <strong>mesurable positive</strong> :</p>
-                        <div class="formula">
-                            ∫∫ f dλ = ∫ (∫ f(x,y) dy) dx = ∫ (∫ f(x,y) dx) dy
-                        </div>
-                        <p style="margin-top: 1em; font-size: 0.85em;">
-                            ⚡ <strong>Utilisé pour prouver l'intégrabilité</strong>
-                        </p>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Fubini (f intégrable)</div>
-                        <p>Si f: R² → R est <strong>intégrable</strong> :</p>
-                        <div class="formula">
-                            ∫∫ f dλ = ∫ (∫ f(x,y) dy) dx = ∫ (∫ f(x,y) dx) dy
-                        </div>
-                        <p style="margin-top: 1em;"><strong>⚠️ Condition nécessaire :</strong></p>
-                        <div class="formula">
-                            ∫ |f| dλ < +∞
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-methode">Méthode</span>
-                    <div class="content-box">
-                        <div class="concept-title">Preuve d'Intégrabilité</div>
-                        <p><strong>Appliquer Fubini-Tonelli à |f| :</strong></p>
-                        <ol style="font-size: 0.85em;">
-                            <li>Calculer ∫ᴿ (∫ᴿ |f(x,y)| dy) dx</li>
-                            <li>Si le résultat est fini</li>
-                            <li>⟹ f est intégrable ✓</li>
-                        </ol>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-remarque">Remarque Importante</span>
-                    <div class="content-box">
-                        <div class="concept-title">Échec de Fubini - Interprétation</div>
-                        <p>Si les deux intégrales itérées donnent des résultats <strong>différents</strong></p>
-                        <p>ou si ∫ |f| dλ = +∞</p>
-                        <p style="margin-top: 1em;">⟹ <strong>f n'est pas intégrable</strong></p>
-                        <p style="font-size: 0.8em; margin-top: 1em; opacity: 0.8;">
-                            L'égalité des intégrales itérées est la <strong>conséquence</strong> de l'intégrabilité, non sa cause
-                        </p>
-                    </div>
-                </section>
-            </section>
-
-            <!-- CHAPITRE VI: CHANGEMENT DE VARIABLES -->
-            <section>
-                <section class="chapter-intro priority-high">
-                    <h2>Chapitre VI</h2>
-                    <h3>Changement de Variables en Rⁿ</h3>
-                    <p style="font-size: 0.8em; margin-top: 1em;">
-                        Technique de calcul en R²
-                    </p>
-                </section>
-
-                <section>
-                    <span class="badge badge-definition">Définition</span>
-                    <div class="content-box">
-                        <div class="concept-title">C¹-Difféomorphisme</div>
-                        <p>φ: U → V est un C¹-difféomorphisme si :</p>
-                        <ul style="font-size: 0.85em;">
-                            <li>φ bijective</li>
-                            <li>φ de classe C¹ sur U</li>
-                            <li>Jac φ(x) ≠ 0 pour tout x ∈ U</li>
-                        </ul>
-                        <div class="formula" style="margin-top: 1em;">
-                            Jacobien = det(Jφ(x))
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-theoreme">Théorème</span>
-                    <div class="content-box">
-                        <div class="concept-title">Formule de Changement de Variables</div>
-                        <div class="formula">
-                            ∫ᵥ f(y) dλ(y) = ∫ᵤ f∘φ(x) |Jac φ(x)| dλ(x)
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-methode">Application Mécanique</span>
-                    <div class="content-box">
-                        <div class="concept-title">Procédure</div>
-                        <ol style="font-size: 0.85em;">
-                            <li>Remplacer y par φ(x) dans f</li>
-                            <li>Remplacer dλ(y) par |Jac φ(x)| dλ(x)</li>
-                        </ol>
-                    </div>
-                </section>
-
-                <section>
-                    <span class="badge badge-remarque">Remarque</span>
-                    <div class="content-box">
-                        <div class="concept-title">Coordonnées Polaires</div>
-                        <p>Pour φ(r,θ) = (r cos θ, r sin θ) :</p>
-                        <div class="formula">
-                            |Jac φ(r, θ)| = r
-                        </div>
-                        <p style="margin-top: 1em;">L'élément dλ(x,y) devient :</p>
-                        <div class="formula">
-                            r dλ(r,θ)
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-            <!-- Slide de fin -->
-            <section>
-                <h2>✨ Fin des Fiches de Révision</h2>
-                <p style="font-size: 0.9em; margin-top: 2em;">
-                    <strong>Priorités pour l'examen :</strong>
-                </p>
-                <ul style="font-size: 0.8em;">
-                    <li>🔥 Théorèmes de Fubini (intégrabilité)</li>
-                    <li>⭐ TCD et ses corollaires</li>
-                    <li>📊 Changement de variables</li>
-                </ul>
-                <p style="font-size: 0.7em; margin-top: 3em; opacity: 0.6;">
-                    Bon courage pour vos révisions ! 💪
-                </p>
-            </section>
-        </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin-bottom:14px">
+      <div class="portrait"><i class="fa-solid fa-user-ninja"></i></div>
+      <div style="flex:1;min-width:190px">
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-name">Nom</span><input type="text" id="P-name" value="Captain Communist"></div>
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-player">Joueur</span><input type="text" id="P-player" value="Massyl"></div>
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-grade">Grade</span><input type="text" id="P-grade" value="Semi Class 1"></div>
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-age">Âge</span><input type="number" id="P-age" value="45" style="width:70px;flex:none"></div>
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-class">Class</span><input type="text" id="P-class" value="Swordsman"></div>
+        <div class="field-row"><span class="flabel" contenteditable="true" id="L-spd">Move Speed</span><input type="text" id="P-spd" value="55 ft." style="width:70px;flex:none"></div>
+      </div>
     </div>
 
-    <div class="navigation-hint">
-        ← → : Navigation | ↑ ↓ : Sections
+    <div class="stat-bar">
+      <div class="stat-box" style="background:#fde8e8;border-color:#c44">
+        <span class="sn" contenteditable="true" id="T-hp">HP</span>
+        <input type="text" id="V-hp" value="80/80" style="color:#8b0000">
+      </div>
+      <div class="stat-box" style="background:#e8edfb;border-color:#336">
+        <span class="sn" contenteditable="true" id="T-ce">CE</span>
+        <input type="text" id="V-ce" value="95/95" style="color:#1a3a8b">
+      </div>
+      <div class="stat-box">
+        <span class="sn" contenteditable="true" id="T-ac">AC</span>
+        <input type="text" id="V-ac" value="12">
+      </div>
+      <div class="stat-box" style="background:#fdf9e8;border-color:#996">
+        <span class="sn" contenteditable="true" id="T-yen">Yen</span>
+        <input type="text" id="V-yen" value="5000 ¥">
+      </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-    <script>
-        Reveal.initialize({
-            hash: true,
-            transition: 'slide',
-            backgroundTransition: 'fade',
-            controls: true,
-            progress: true,
-            center: true,
-            slideNumber: 'c/t',
-            keyboard: true,
-            overview: true,
-            touch: true,
-            loop: false,
-            rtl: false,
-            shuffle: false,
-            fragments: true,
-            fragmentInURL: true,
-            embedded: false,
-            help: true,
-            showNotes: false,
-            autoPlayMedia: null,
-            preloadIframes: null,
-            autoSlide: 0,
-            autoSlideStoppable: true,
-            mouseWheel: false,
-            hideInactiveCursor: true,
-            hideCursorTime: 5000,
-            previewLinks: false,
-            width: 1280,
-            height: 720,
-            margin: 0.04,
-            minScale: 0.2,
-            maxScale: 2.0
-        });
-    </script>
+    <div class="main-stats">
+      <div class="ms-box"><span class="sn" contenteditable="true" id="MS-l1">Power</span><input type="number" id="MS-v1" value="5"></div>
+      <div class="ms-box"><span class="sn" contenteditable="true" id="MS-l2">Speed</span><input type="number" id="MS-v2" value="5"></div>
+      <div class="ms-box"><span class="sn" contenteditable="true" id="MS-l3">Technique</span><input type="number" id="MS-v3" value="5"></div>
+      <div class="ms-box"><span class="sn" contenteditable="true" id="MS-l4">Intelligence</span><input type="number" id="MS-v4" value="2"></div>
+      <div class="ms-box"><span class="sn" contenteditable="true" id="MS-l5">Coop</span><input type="number" id="MS-v5" value="1"></div>
+    </div>
+
+    <div class="div">— ◆ —</div>
+
+    <div class="substats-wrap">
+      <div class="subg">
+        <table>
+          <tr><th colspan="2" contenteditable="true" id="TH-ss1">Power</th></tr>
+          <tr><td><span contenteditable="true" id="SL1">Combat</span><input type="text" id="SV1" value="+2"></td></tr>
+          <tr><td><span contenteditable="true" id="SL2">Strength</span><input type="text" id="SV2"></td></tr>
+          <tr><td><span contenteditable="true" id="SL3">Fortitude</span><input type="text" id="SV3"></td></tr>
+          <tr><td><span contenteditable="true" id="SL4">Intimidation</span><input type="text" id="SV4"></td></tr>
+          <tr><td><span contenteditable="true" id="SL5">Athletics</span><input type="text" id="SV5"></td></tr>
+        </table>
+      </div>
+      <div class="subg">
+        <table>
+          <tr><th colspan="2" contenteditable="true" id="TH-ss2">Speed</th></tr>
+          <tr><td><span contenteditable="true" id="SL6">Reflexes</span><input type="text" id="SV6"></td></tr>
+          <tr><td><span contenteditable="true" id="SL7">Tempo</span><input type="text" id="SV7"></td></tr>
+          <tr><td><span contenteditable="true" id="SL8">Stealth</span><input type="text" id="SV8"></td></tr>
+          <tr><td><span contenteditable="true" id="SL9">Precision</span><input type="text" id="SV9"></td></tr>
+          <tr><td><span contenteditable="true" id="SL10">Aptitude</span><input type="text" id="SV10"></td></tr>
+        </table>
+      </div>
+      <div class="subg">
+        <table>
+          <tr><th colspan="2" contenteditable="true" id="TH-ss3">Technique</th></tr>
+          <tr><td><span contenteditable="true" id="SL11">Control</span><input type="text" id="SV11"></td></tr>
+          <tr><td><span contenteditable="true" id="SL12">Survival</span><input type="text" id="SV12"></td></tr>
+          <tr><td><span contenteditable="true" id="SL13">Acrobatics</span><input type="text" id="SV13"></td></tr>
+          <tr><td><span contenteditable="true" id="SL14">Talent</span><input type="text" id="SV14" value="+5"></td></tr>
+          <tr><td><span contenteditable="true" id="SL15">Instinct</span><input type="text" id="SV15"></td></tr>
+        </table>
+      </div>
+      <div class="subg">
+        <table>
+          <tr><th colspan="2" contenteditable="true" id="TH-ss4">Intelligence</th></tr>
+          <tr><td><span contenteditable="true" id="SL16">Perception</span><input type="text" id="SV16" value="+2"></td></tr>
+          <tr><td><span contenteditable="true" id="SL17">General Ed</span><input type="text" id="SV17"></td></tr>
+          <tr><td><span contenteditable="true" id="SL18">Tech Ed</span><input type="text" id="SV18"></td></tr>
+          <tr><td><span contenteditable="true" id="SL19">Jujutsu Ed</span><input type="text" id="SV19"></td></tr>
+          <tr><td><span contenteditable="true" id="SL20">Medical Ed</span><input type="text" id="SV20"></td></tr>
+        </table>
+      </div>
+      <div class="subg">
+        <table>
+          <tr><th colspan="2" contenteditable="true" id="TH-ss5">Cooperation</th></tr>
+          <tr><td><span contenteditable="true" id="SL21">Combo</span><input type="text" id="SV21"></td></tr>
+          <tr><td><span contenteditable="true" id="SL22">Charisma</span><input type="text" id="SV22"></td></tr>
+          <tr><td><span contenteditable="true" id="SL23">Persuasion</span><input type="text" id="SV23"></td></tr>
+          <tr><td><span contenteditable="true" id="SL24">Insight</span><input type="text" id="SV24" value="+1"></td></tr>
+          <tr><td><span contenteditable="true" id="SL25">Deception</span><input type="text" id="SV25"></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-1">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-xp-title">XP Abilities (19 XP)</h2>
+    <div class="skill-list" id="xp-list"></div>
+    <button class="add-btn" onclick="addSkill('xp')"><i class="fa-solid fa-plus"></i> Ajouter une aptitude</button>
+  </div>
+</div>
+
+<div class="page" id="page-2">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-js-title">Jujutsu Skills (12 Slots)</h2>
+    <div style="margin-bottom:18px">
+      <div class="stitle2">Learning Slot</div>
+      <div class="field-row"><span class="flabel">En cours</span><input type="text" id="JS-learn" value="Skyfall Mastery"></div>
+    </div>
+    <div class="stitle2">Skills débloqués</div>
+    <div class="skill-list" id="js-list"></div>
+    <button class="add-btn" onclick="addSkill('js')"><i class="fa-solid fa-plus"></i> Ajouter un skill</button>
+  </div>
+</div>
+
+<div class="page" id="page-3">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-inv">Inventaire & Équipement</h2>
+    <div class="g2">
+      <div>
+        <div class="stitle2" contenteditable="true" id="T-arm">Tenue (Armor)</div>
+        <div class="field-row"><span class="flabel">Tête</span><input type="text" id="IV1"></div>
+        <div class="field-row"><span class="flabel">Corps</span><input type="text" id="IV2" value="paris saclay jacket +2 AC"></div>
+        <div class="field-row"><span class="flabel">Jambes</span><input type="text" id="IV5" value="Jujutsu Pants"></div>
+        <div class="field-row"><span class="flabel">Chaussures</span><input type="text" id="IV7" value="Boots"></div>
+      </div>
+      <div>
+        <div class="stitle2" contenteditable="true" id="T-bag">Sac / Armes</div>
+        <div class="inv-item"><i class="fa-solid fa-box inv-icon"></i><input type="text" id="OBJ1" value="Hammer 3d6+3+2 (Grade 2 Tool)"></div>
+        <div class="inv-item"><i class="fa-solid fa-box inv-icon"></i><input type="text" id="OBJ2" value="Sword Polish (4 uses)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-4">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-ma">Arts Martiaux</h2>
+    <div class="ma-header">
+      <span>Attaque</span>
+      <span>Dégâts / Jet</span>
+      <span>Cooldown</span>
+      <span></span>
+    </div>
+    <div id="ma-list"></div>
+    <button class="add-btn" onclick="addMA()"><i class="fa-solid fa-plus"></i> Ajouter une attaque</button>
+  </div>
+</div>
+
+<div class="page" id="page-5">
+  <div class="card">
+    <h2 class="ptitle" contenteditable="true" id="T-ce-title">Énergie Maudite</h2>
+    <div class="g2">
+      <div class="field-row"><span class="flabel">Black Flash Range</span><input type="text" id="CE-bf" value="22 (Zone 20-22)"></div>
+      <div class="field-row"><span class="flabel">XP Threshold</span><input type="text" id="CE-xp" value="Below 13"></div>
+    </div>
+    <div class="g3">
+      <table class="data-table">
+        <thead><tr><th>Output Level</th><th>Damage</th></tr></thead>
+        <tbody><tr><td><input type="text" value="2"></td><td><input type="text" value="1d4+2"></td></tr></tbody>
+      </table>
+      <table class="data-table">
+        <thead><tr><th>Imbue Level</th><th>Damage</th></tr></thead>
+        <tbody><tr><td><input type="text" value="3"></td><td><input type="text" value="2d4"></td></tr></tbody>
+      </table>
+      <table class="data-table">
+        <thead><tr><th>RCT Level</th><th>Healing</th></tr></thead>
+        <tbody><tr><td><input type="text" value="1"></td><td><input type="text" value="1d10+10"></td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-6">
+  <div class="card">
+    <h2 class="ptitle">Archétype</h2>
+    <div class="g2">
+      <div class="field-row"><span class="flabel">Archetype</span><input type="text" value="Swordsman"></div>
+      <div class="field-row"><span class="flabel">Sub-Arch</span><input type="text" value="Upstart"></div>
+    </div>
+    <table class="data-table">
+        <thead><tr><th>Slot</th><th>Aptitude</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td>The Upstart</td><td>Permanent aptitude in 1 Intel Substat (Perception).</td></tr>
+            <tr><td>2</td><td>Quick Stroke</td><td>Advantage on initiative with weapon in hand.</td></tr>
+            <tr><td>3</td><td>Edger</td><td>Successful block/dodge deals 1d4 unmitigatable dmg.</td></tr>
+            <tr><td>4</td><td>Double Stroke</td><td>After melee hit, extra non-imbued attack (2/Day).</td></tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page" id="page-7">
+  <div class="card">
+    <h2 class="ptitle">Cursed Technique : Distribution</h2>
+    <div class="tscroll">
+      <table class="data-table">
+        <thead><tr><th>Name</th><th>Effect</th><th>Cost</th><th>Range</th><th>Dmg</th></tr></thead>
+        <tbody>
+          <tr><td>Link</td><td>Creates vital link via Imbue touch.</td><td>0</td><td>Melee</td><td>N/A</td></tr>
+          <tr><td>Depletion</td><td>Drains energy: -3 Speed/Reaction rolls.</td><td>4(2)</td><td>20 tiles</td><td>Insight VS Str</td></tr>
+          <tr><td>CE Charge</td><td>Shares CE with ally: +2 Power rolls.</td><td>4(2)</td><td>20 tiles</td><td>N/A</td></tr>
+          <tr><td>911 Bird</td><td>Explosive bird (Homing if linked).</td><td>4</td><td>30 tiles</td><td>2d6+1d4</td></tr>
+          <tr><td>Wealth Redist.</td><td>Redistributes dmg between linked allies.</td><td>6</td><td>Aura</td><td>N/A</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-8">
+  <div class="card">
+    <h2 class="ptitle">Binding Vows</h2>
+    <div id="vows-list"></div>
+    <button class="add-btn" onclick="addVow()"><i class="fa-solid fa-plus"></i> Ajouter un Vœu</button>
+  </div>
+</div>
+
+</div><div id="save-ind">Auto-save active</div>
+
+<script>
+const STORE = 'jjk_v7_cap_';
+let currentPage = 0;
+let modalTarget = null;
+
+const DEFAULT_XP = [
+  {name:'Technical Genius (5 XP)', desc:'Tactical pool = stat total. Reduce dmg, buff dmg or cost.', cost:'5'},
+  {name:'Next Level (5 XP)', desc:'Permanent +20 HP and +20 CE.', cost:'5'},
+  {name:'Bullet Time (4 XP)', desc:'Double the result of your block/dodge roll.', cost:'4'},
+  {name:'In The Zone (3 XP)', desc:'Decreases Black Flash Range by 2.', cost:'3'},
+  {name:'Aggressive (2 XP)', desc:'Move 20ft towards attacker if hit.', cost:'2'}
+];
+
+const DEFAULT_JS = [
+  {name:'[R1] Reverse Cursed Technique', desc:'Heals 1d10 + (TLx2).'},
+  {name:'[R1] Simple Domain', desc:'Negates domain sure-hit effects.'},
+  {name:'[R4] CE Imbue', desc:'Flow CE into objects/body (1d4 base).'},
+  {name:'[R4] CE Reinforcement', desc:'Defensive coating to reduce dmg.'},
+  {name:'Improved RCT (R2)', desc:'Adds +1d10 to RCT healing.'},
+  {name:'CE Imbue Increase (R2)', desc:'Imbue lvl up (+1d4+2).'},
+  {name:'CE Imbue Increase (R3)', desc:'Imbue max lvl (2d4).'},
+  {name:'Cursed Tool Proficiency (R3)', desc:'+2 dmg with tools.'},
+  {name:'Cursed Refinement (R2)', desc:'Reduce CE costs by 2 (min 1).'},
+  {name:'Weapon Specialist (R2)', desc:'+1 use of all weapon arts.'},
+  {name:'CE Control Increase (R3)', desc:'+1 to Talent and hit rolls.'},
+  {name:'Skyfall (R2)', desc:'Black Flash target = Prey (+1d10 dmg).'}
+];
+
+const DEFAULT_MA = [
+  {name:'Punch',dmg:'5d4+5',cd:'N/A'},
+  {name:'Kick',dmg:'5d4+5',cd:'N/A'},
+  {name:'Hammer Strike',dmg:'3d6+12',cd:'N/A'},
+  {name:'Flurry of Blows',dmg:'5d6+5',cd:'1 round'},
+  {name:'Roundhouse Kick',dmg:'5d6+5',cd:'1 round'},
+  {name:'Artery Nick (Art)',dmg:'Bleed DC 15',cd:'2 uses'}
+];
+
+function showPage(idx, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-'+idx).classList.add('active');
+  if(btn) btn.classList.add('active');
+  currentPage = idx;
+  window.scrollTo(0,0);
+}
+function goToPage(idx) { showPage(idx, document.querySelectorAll('.tab-btn')[idx]); toggleMenu(); }
+function toggleMenu() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('soverlay').classList.toggle('open'); }
+
+function renderSkills(type) {
+  const arr = type==='xp'?DEFAULT_XP:DEFAULT_JS;
+  const listEl = document.getElementById(type+'-list');
+  listEl.innerHTML = '';
+  arr.forEach((sk,i) => {
+    const row = document.createElement('div'); row.className = 'skill-item';
+    row.innerHTML = `<input type="text" value="${sk.name}"> <button class="preview-btn" onclick="openModal('${type}',${i})">Aperçu</button>`;
+    listEl.appendChild(row);
+  });
+}
+
+function renderMA() {
+  const listEl = document.getElementById('ma-list');
+  listEl.innerHTML = '';
+  DEFAULT_MA.forEach((row, i) => {
+    const div = document.createElement('div'); div.className = 'ma-row';
+    div.innerHTML = `<input type="text" value="${row.name}"><input type="text" value="${row.dmg}"><input type="text" value="${row.cd}"><button class="del-btn"><i class="fa-solid fa-trash"></i></button>`;
+    listEl.appendChild(div);
+  });
+}
+
+function renderVows() {
+    const el = document.getElementById('vows-list');
+    el.innerHTML = `<div class="vow-block"><div class="vow-name">Revealing the Hand</div><p style="font-size:.8rem">Explain ability to opponent: +10 Temp CE.</p></div>`;
+}
+
+function openModal(type, idx) {
+  const item = type==='xp'?DEFAULT_XP[idx]:DEFAULT_JS[idx];
+  document.getElementById('modal-title').textContent = item.name;
+  document.getElementById('modal-name').value = item.name;
+  document.getElementById('modal-desc').value = item.desc;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+
+window.addEventListener('DOMContentLoaded', () => {
+  renderSkills('xp'); renderSkills('js'); renderMA(); renderVows();
+});
+</script>
 </body>
 </html>
